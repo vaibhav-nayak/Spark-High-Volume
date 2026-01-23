@@ -1,0 +1,19 @@
+services:
+  spark-driver:
+    image: apache/spark:4.0.1-python3
+    entrypoint: ["bash", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+      - "4050:4040"
+    volumes:
+      - ./dataset:/dataset
+
+  spark-executor:
+    image: apache/spark:4.0.1-python3
+    ports:
+      - "8081:8081"
+      - "4060:4040"
+    entrypoint: ["bash", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+    depends_on:
+      - spark-driver
