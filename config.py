@@ -1,11 +1,6 @@
 from pyspark.sql import SparkSession
-import os
 
-DRIVER_URL = os.getenv("DRIVER_URL", "local[3]")
-MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "http://localhost:9000")
-MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "minioadmin")
-MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "minioadmin")
-BUCKET_NAME = os.getenv("BUCKET_NAME", "parquet-data")
+from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, DRIVER_URL
 
 spark = (
     SparkSession.builder
