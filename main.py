@@ -1,7 +1,7 @@
-from pyspark.sql import SparkSession, Window
-
-from config import spark, BUCKET_NAME
+from config import spark
 import pyspark.sql.functions as F
+
+from constants import BUCKET_NAME
 
 df = (
     spark.read.parquet(f"s3a://{BUCKET_NAME}/")
