@@ -12,7 +12,7 @@ services:
 
   spark-executor:
     image: apache/spark:4.0.1-python3
-    container_name: spark-executor
+    scale: 2
     entrypoint: [ "bash", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-driver:7077" ]
     depends_on:
       - spark-driver
