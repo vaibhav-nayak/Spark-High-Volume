@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 
-MINIO_ENDPOINT = "http://localhost:9000"
+MINIO_ENDPOINT = "http://minio:9000"
 MINIO_ACCESS_KEY = "minioadmin"
 MINIO_SECRET_KEY = "minioadmin"
 BUCKET_NAME = "parquet-data"
@@ -19,7 +19,7 @@ spark = (
     .config("spark.hadoop.fs.s3a.connection.timeout", "60000")
     .config("spark.hadoop.fs.s3a.threads.keepalivetime", "60")
     .config("spark.hadoop.fs.s3a.path.style.access", True)
-    .master("local[4]")
+    .master("spark://spark-driver:7077")
     .getOrCreate()
 )
 
