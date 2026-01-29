@@ -18,3 +18,7 @@ just start-spark
 just submit-job
 ```
 
+#### See History Server at
+```shell
+http://localhost:18080
+```
