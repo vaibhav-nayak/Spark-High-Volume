@@ -75,4 +75,4 @@ monthly_share_yoy = (
     )
 )
 
-monthly_share_yoy.write.parquet(f"s3a://{BUCKET_NAME}/")
+monthly_share_yoy.write.parquet(f"s3a://{BUCKET_NAME}/yoy-shares")
