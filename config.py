@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 
-from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, DRIVER_URL
+from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MASTER_URL
 
 spark = (
     SparkSession.builder
@@ -16,6 +16,8 @@ spark = (
     .config("spark.hadoop.fs.s3a.connection.timeout", "60000")
     .config("spark.hadoop.fs.s3a.threads.keepalivetime", "60")
     .config("spark.hadoop.fs.s3a.path.style.access", True)
-    .master(DRIVER_URL)
+    .config("spark.eventLog.enabled", True)
+    .config("spark.eventLog.dir", f"/opt/spark/spark-events")
+    .master(MASTER_URL)
     .getOrCreate()
 )

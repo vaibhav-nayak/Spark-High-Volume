@@ -9,7 +9,7 @@ run:
     uv run main.py
 
 start-spark:
-    docker-compose up spark-driver spark-executor -d
+    docker-compose up spark-master spark-worker spark-history-server -d
 
 submit-job:
     zip jobs.zip config.py constants.py main.py
