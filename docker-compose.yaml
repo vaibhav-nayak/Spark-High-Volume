@@ -7,8 +7,6 @@ services:
       - "8080:8080"
       - "7077:7077"
       - "4050:4040"
-    volumes:
-      - ./dataset:/dataset
 
   spark-worker:
     image: apache/spark:4.0.1-python3
@@ -59,8 +57,8 @@ services:
 
     volumes:
       - ./jobs.zip:/app/jobs.zip
-      - ./main.py:/app/main.py
-      - ./submit.sh:/app/submit.sh
+      - ./jobs/main.py:/app/main.py
+      - ./scripts/submit.sh:/app/submit.sh
       - ./spark-events:/opt/spark/spark-events
 
 volumes:

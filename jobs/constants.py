@@ -1,6 +1,6 @@
 import os
 
-dataset_path = "./dataset/fhv_hv_parquet"
+dataset_path = "../dataset/fhv_hv_parquet"
 
 
 MASTER_URL = os.getenv("MASTER_URL", "local[3]")
