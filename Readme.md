@@ -1,24 +1,20 @@
 ### Prerequities
 - uv
 - docker
-- docker-compose
+- colima
+- kubectl
 
 ### Setup
+#### Setup kubernetes (provide edit role for default namespace)
+```shell
+just setup
+```
 #### Download Data and upload to minio
 ```shell
 just download-upload
 ```
-#### Run the Locally
+#### Run Spark in kubernetes
 ```shell
-just run
-```
-#### Run Spark in containerised environment
-```shell
-just start-spark
-just submit-job
-```
-
-#### See History Server at
-```shell
-http://localhost:18080
+just build
+just depoy
 ```

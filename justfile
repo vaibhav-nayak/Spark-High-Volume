@@ -8,12 +8,22 @@ download-upload: download
 run:
     uv run ./jobs/main.py
 
-start-spark:
-    docker-compose up spark-master spark-worker spark-history-server -d
-
-submit-job:
-    zip jobs.zip ./jobs/*.py
-    docker-compose up submit-job -d
+package-app:
+    cd jobs && zip -r ../jobs.zip *.py
 
 stop-all:
     docker-compose down
+
+build: package-app
+    docker rmi spark-job:v1
+    docker-buildx build -t spark-job:v1 .
+
+deploy:
+    kubectl run spark-job  --image=spark-job:v1
+
+kube-setup:
+    kubectl create clusterrolebinding spark-submitter-admin \
+        --clusterrole=edit \
+        --serviceaccount=default:default
+
+setup:  kube-setup

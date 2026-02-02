@@ -16,8 +16,6 @@ spark = (
     .config("spark.hadoop.fs.s3a.connection.timeout", "60000")
     .config("spark.hadoop.fs.s3a.threads.keepalivetime", "60")
     .config("spark.hadoop.fs.s3a.path.style.access", True)
-    .config("spark.eventLog.enabled", True)
-    .config("spark.eventLog.dir", f"/opt/spark/spark-events")
     .master(MASTER_URL)
     .getOrCreate()
 )
