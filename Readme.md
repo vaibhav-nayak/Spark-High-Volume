@@ -1,6 +1,7 @@
 ### Prerequities
 - uv
 - docker
+- docker-compose
 - colima
 - kubectl
 

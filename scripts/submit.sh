@@ -2,7 +2,7 @@
   --master k8s://https://kubernetes.default.svc \
   --conf "spark.jars.ivy=/tmp/.ivy2" \
   --deploy-mode cluster \
-  --name my-spark-job \
+  --name spark-job \
   --conf spark.kubernetes.namespace=default \
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=default \
   --conf spark.executor.instances=2 \

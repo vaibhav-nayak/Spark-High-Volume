@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 
-from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MASTER_URL
+from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY
 
 spark = (
     SparkSession.builder
@@ -16,6 +16,5 @@ spark = (
     .config("spark.hadoop.fs.s3a.connection.timeout", "60000")
     .config("spark.hadoop.fs.s3a.threads.keepalivetime", "60")
     .config("spark.hadoop.fs.s3a.path.style.access", True)
-    .master(MASTER_URL)
     .getOrCreate()
 )
