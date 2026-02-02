@@ -5,7 +5,6 @@ from constants import MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY
 spark = (
     SparkSession.builder
     .appName("High Volume Taxi data analysis")
-    .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262")
     .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
     .config("spark.hadoop.fs.s3a.endpoint", MINIO_ENDPOINT)
     .config("spark.hadoop.fs.s3a.access.key", MINIO_ACCESS_KEY)

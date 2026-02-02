@@ -13,7 +13,7 @@ build: package-app
     docker-buildx build -t spark-job:v1 .
 
 deploy:
-    kubectl run spark-job  --image=spark-job:v1
+    kubectl run spark-job  --image=spark-job:v1 --restart='Never'
 
 minio:
     docker-compose up minio
